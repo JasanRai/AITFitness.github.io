@@ -1,9 +1,12 @@
+body {
+  width: 100%;
+  background-color: bisque;
+}
 
-
-#top
+/*#top
 {
     background-color: darkturquoise;
-   
+    width: 100%;
 }
 
 #top ul.account
@@ -24,21 +27,92 @@
 .navbar-default
 {
     background-color:aquamarine;
+    color:black;
+}*/
+
+#top {
+  height: 50px;
 }
 
-#top
-{
-    height: 50px;
+#top a.logo img {
+  width: 50px;
+  height: 50px;
+  padding-bottom: 2px;
 }
-
-#top a.logo img
+/*.carousel
 {
-    width: 50px;
-    height:50px;
-    padding-bottom: 2px;
+    padding-left: 200px;
+    padding-top : 20px;
+    width : 100%;
+    height : 700px;
+    margin: auto;
     
-   
 }
 
+.carousel .carousel-control-prev
+{
+    width: 500px;
+    filter:invert(1);
+}
 
+.carousel .carousel-control-next
+{
+    width: 1300px;
+    filter:invert(1);
+}*/
 
+.registrationForm {
+  padding-top: 100px;
+}
+
+#footer {
+  width: 100%;
+  background: #e0e0e0;
+  padding: 10px 0;
+}
+
+#footer .social {
+  text-align: left;
+}
+
+#footer .row {
+  padding-left: 80px;
+}
+
+#footer .social a {
+  margin: 0px 10px 0px 0px;
+  display: inline-block;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  line-height: 30px;
+  font-size: 15px;
+  text-align: center;
+  vertical-align: bottom;
+  background: #555555;
+}
+
+.loginForm {
+  padding-top: 150px;
+  padding-right: 100px;
+  height: 620px;
+}
+
+.registrationForm {
+  padding-top: 100px;
+  padding-right: 100px;
+  height: 620px;
+}
+.productList {
+  padding-left: 10px;
+  padding-top: 10px;
+  float: left;
+  border-style: solid;
+}
+.container-fluid {
+  display: inline-grid;
+}
+
+.row {
+}
