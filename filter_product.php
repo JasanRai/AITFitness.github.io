@@ -4,6 +4,8 @@
 $db = mysqli_connect('localhost', 'root', '', 'authentication');
 include("header.php");
 
+$arr = explode("/",$_SERVER['PHP_SELF']);
+$CurrentDIR = '/' . $arr[1] . '/' . $arr[2];
 $category =  $_GET['category'];
 ?>
 
@@ -20,7 +22,7 @@ $category =  $_GET['category'];
 </div>
   <div class="row">
   <div class="col-4">
-    <?php include("filter_category.php"); ?> 
+    <?php include("filter_category.php"); ?>
   </div>
   <div class="col-8">
   <?php
@@ -31,45 +33,48 @@ $sql="SELECT * FROM product WHERE prod_category =" . $_GET['id'] . " ";
 $results= mysqli_query($db,$sql);
 
  while($row = mysqli_fetch_array($results)){
-     
+
    $prod_id = $row["prod_id"];
    $prod_category = $row["prod_category"];
    $prod_title = $row["prod_title"];
    $prod_price = $row["prod_price"];
    $prod_description = $row["prod_description"];
    $prod_image = $row["prod_image"];
- 
+
   echo "
-<div class = 'productList'>
-  <div class='col-md-8 p-1 '  style = 'width : 300px; height : 300px;'>
-  
+  <div class = 'productList bg-white'>
+  <div class='col-md-8 p-1 mx-auto'  style = 'width : 300px; height : 300px;'>
+
                 <div class='panel panel-default ' >
-                
-                    <div class='panel-heading'>$prod_title</div>
+
+                    <div id='title' class='panel-heading'>$prod_title</div>
                         <div class='panel-body' style=' height: auto; overflow: hidden;'>
-                             <a href = 'description_page.php?id=$prod_id'>
-                                <img class='img-responsive' src='images/$prod_image' style = 'width : 200px; height:200px;'>
-                              </a>  
+                            <a href = 'description_page.php?id=$prod_id'>
+                                <img id='image' class='img-responsive' src='images/$prod_image' style = 'width : 200px; height:200px;'>
+                              </a>
                         </div>
-                        
-                         <div class='panel-heading'>
-                            $ $prod_price 
-                            <button class='btn btn-info btn-xs'>Add To Cart</button>
-                            
-                        </div>
-                    </div> 
+
+                        <form method='POST' action='$CurrentDIR/cart.php?action=add&id=$prod_id&quantity=1'>
+                          <div class='panel-heading'>
+                              $ $prod_price
+                              <button class='btn btn-info btn-xs' type='submit' name='add_to_cart'>
+                                Add To Cart
+                              </button>
+                          </div>
+                        </form>
+
+                    </div>
         </div>
         </div>
      ";
 
  };
-   
+
     ?>
   </div>
   </div>
 </div>
 
 
- 
-<?php include ("footer.php"); ?>
 
+<?php include ("footer.php"); ?>

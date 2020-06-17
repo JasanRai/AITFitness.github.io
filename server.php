@@ -1,7 +1,7 @@
 
 
 <?php
-
+  
 
     $Firstname = "";
     $Lastname = "";
@@ -11,7 +11,7 @@
 //CONNECT TO DATABASE
     $db = mysqli_connect('localhost', 'root', '', 'authentication');
 
-   
+
     if(isset($_POST['register']))
     {
         $Firstname = mysqli_real_escape_string($db, $_POST['Firstname']);
@@ -19,11 +19,11 @@
         $Email = mysqli_real_escape_string($db, $_POST['Email']);
         $Password = mysqli_real_escape_string($db, $_POST['Password']);
         $CPassword = mysqli_real_escape_string($db, $_POST['CPassword']);
-        
+
         if(empty($Firstname))
         {
             array_push($errors, "First Name is required");
-            
+
         }
          if(empty($Lastname))
         {
@@ -41,24 +41,23 @@
         {
             array_push($errors, "Both passwords do not match");
         }
-       
+
         if(count($errors) == 0)
         {
             // $Password = md5($Password); // encrypt password before storing
             $Password = password_hash($Password, PASSWORD_DEFAULT);
-            // $sql = "INSERT INTO users(Firstname, Lastname, Email, Password) 
+            // $sql = "INSERT INTO users(Firstname, Lastname, Email, Password)
             //         VALUES('$Firstname', '$Lastname', '$Email', '$Password')";
             $sql = "INSERT INTO users (Firstname,Lastname, Password, Email) VALUES ('".$Firstname."',  '".$Lastname."', '".$Password."', '".$Email."')";
             mysqli_query($db, $sql);
-           
+
             header('Location:/Php/AW-Project/login.php');
         }
-        
+
     }
-        
+
     if(isset($_POST['login']))
     {
-        session_start();
           $Email = mysqli_real_escape_string($db, $_POST['Email']);
           $Password = mysqli_real_escape_string($db, $_POST['Password']);
           echo $Password;
@@ -70,19 +69,19 @@
         {
             array_push($errors, "Password is required");
         }
-        
+
         if(count($errors) == 0)
         {
             echo $Password;
             // $Password = md5($Password);
             // $query = "SELECT * FROM users WHERE Email ='$Email' AND Password ='$Password'";
             // $result = mysqli_query($db, $query);
-    
+
             // if (mysqli_num_rows($result) == 1)
             // {
             //  header("Location:/Php/AW-Project/index.php");
-            // } 
-            // else 
+            // }
+            // else
             // {
             //     array_push($errors, "wrong username/password combination");
             // }
@@ -112,5 +111,5 @@ echo "Testing";
             header('location:login.php');
         }*/
 
-    
+
 ?>
