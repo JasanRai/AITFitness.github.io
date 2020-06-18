@@ -1,16 +1,20 @@
-<?php include("header.php");
-require_once("server.php");
+<?php 
+// require_once("server.php");
+require_once("header.php");
 
 
-if(isset($_POST["add_to_cart"])) {
-  // echo 'add to cart is set';
+
+if(isset($_POST["add_to_cart"])) 
+{
+  echo 'add to cart is set';
   $id = $_GET["id"];
   $quantity = (int)$_GET["quantity"];
   // Check if user wants to add product to cart
-  if($_GET["action"] == "add") {
+  if($_GET["action"] == "add") 
+  {
     $sql = "SELECT * FROM product WHERE prod_id ='" .$id. "'";
     $results = mysqli_query($db,$sql);
-     
+ 
     if(mysqli_num_rows($results) > 0)
     {
     
@@ -21,46 +25,66 @@ if(isset($_POST["add_to_cart"])) {
           'image' => $row["prod_image"],
           'quantity' => $quantity,
           'price' => $row["prod_price"]
+           
         );
-    }
+        
+     }
     //If some products has been added to the cart
+   
     if(isset($_SESSION["shopping_cart"]))
     {
-       
+     
       $item_array_id = array_column($_SESSION["shopping_cart"],'id');
+
       if(!in_array($_GET['id'],$item_array_id))
       {//specific item hasn't been added
           $count = count($_SESSION["shopping_cart"]);
           $_SESSION["shopping_cart"][$count] = $item_array;
           echo '<script>window.location="cart.php"</script>';
-      } else {
+           
+      }
+       
+      else
+      {
         //Item already added
-        foreach($_SESSION["shopping_cart"] as $key => $value) {
-            if($_SESSION["shopping_cart"][$key]['id'] == $_GET["id"]) {
+        foreach($_SESSION["shopping_cart"] as $key => $value) 
+        {
+            if($_SESSION["shopping_cart"][$key]['id'] == $_GET["id"]) 
+            {
               $_SESSION["shopping_cart"][$key]['quantity'] = number_format($_SESSION["shopping_cart"][$key]['quantity'] + $quantity, 0);
               echo '<script>window.location="cart.php"</script>';
             }
         }
+          
       }
-    } else if (!isset($_SESSION["shopping_cart"]))
+    
+    } 
+  
+    else if (!isset($_SESSION["shopping_cart"]))
     {//If there is nothing in the cart
+    /*   foreach( $item_array as $value){
+        echo $value . "< br>";
+        } */
+      /* echo $item_array; */
       $_SESSION["shopping_cart"][0] = $item_array;
-      echo '<script>window.location="cart.php"</script>';
+      echo '<script>window.location="cart.php"</script>'; 
     }
   } // ADD
 }
 // Remove
+if(isset($_POST['delete'])){
 
-if($_POST["action"] == "remove") {
-  // Remove Product
+  if($_POST["action"] == "Remove") {
+    // Remove Product
   foreach ($_SESSION["shopping_cart"] as $key => $value)
-    {
-      if($_POST['id'] == $value['id']) {
-        //Remove the product from the cart
-        unset($_SESSION["shopping_cart"][$key]);
-        // echo '<script>window.location="/public/shopping_cart.php"</script>';
-      }
+  {
+    if($_POST['id'] == $value['id']) {
+      //Remove the product from the cart
+      unset($_SESSION["shopping_cart"][$key]);
+      // echo '<script>window.location="/public/shopping_cart.php"</script>';
     }
+  }
+}
 }
 
 
@@ -75,9 +99,8 @@ if($_POST["action"] == "remove") {
       $.ajax({
         url: `cart.php`,
         method: "POST",
-        data: {id:prod_id, action:"remove"},
+        data: {id:prod_id, action:"Remove", delete:"delete"},
         success:function(data) {
-          console.log(data);
           load_cart_data();
         },
       })
@@ -90,7 +113,6 @@ if($_POST["action"] == "remove") {
         method: "POST",
         dataType: "json",
         success: function(data) {
-          console.log(data.cart_detail)
           $('#cart_details').html(data.cart_detail);
           $('.subTotal_price').text(data.subTotal_price);
           $('.shipping_price').text(data.shipping_price);
@@ -105,6 +127,10 @@ if($_POST["action"] == "remove") {
           else {
             $('.checkout').prop('disabled',false)
           }
+
+        },
+        error: function(jqXHR, textStatus, err){
+          alert('Error: ' + textStatus + ' ' + err);
 
         }
       })

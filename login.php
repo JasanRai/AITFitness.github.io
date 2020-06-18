@@ -1,7 +1,10 @@
 <?php 
 include("header.php");
-include("server.php");
-?>x
+/* include("server.php"); */
+
+
+
+?>
        <div class = "row justify-content-center align-items-center ">
          <form action="/Php/AW-Project/login.php" method="post" class= "loginForm">
                  <h3>Login</h3>

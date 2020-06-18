@@ -1,7 +1,7 @@
 
 <?php
-$_SESSION["uid"]="123";
-include "server.php";
+// $_SESSION["uid"]="123";
+// include "server.php";
 
 if(!isset($_POST["category"])){
 $cat_sql="SELECT * FROM category ORDER BY Category_ID DESC";

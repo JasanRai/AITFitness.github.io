@@ -1,12 +1,11 @@
 
 <?php
-require_once("server.php");
 
 include("header.php");
 
 $arr = explode("/",$_SERVER['PHP_SELF']);
 $CurrentDIR = '/' . $arr[1] . '/' . $arr[2];
-$category =  $_GET['category'];
+/*$category =  $_GET['category'];*/
 ?>
 
 <div class="container p-4">
@@ -15,7 +14,7 @@ $category =  $_GET['category'];
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent">
           <li class="breadcrumb-item"><a href="product_page.php">Products</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><?php echo $category; ?></li>
+       <!--   <li class="breadcrumb-item active" aria-current="page"><?php echo $category; ?></li>-->
         </ol>
       </nav>
     </div>
@@ -74,8 +73,5 @@ $category =  $_GET['category'];
     </div>
   </div>
   <!-- End Row -->
-</div>
-
-
 
 <?php include ("footer.php"); ?>

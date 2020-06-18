@@ -7,10 +7,13 @@
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+SET SQL_MODE
+= "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT
+= 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone
+= "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,16 +31,22 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `Category_ID` int(5) NOT NULL,
-  `Category_Name` varchar(50) NOT NULL
+CREATE TABLE `category`
+(
+  `Category_ID` int
+(5) NOT NULL,
+  `Category_Name` varchar
+(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`Category_ID`, `Category_Name`) VALUES
+INSERT INTO `category` (`
+Category_ID`,
+`Category_Name
+`) VALUES
 (1, 'Cardio'),
 (2, 'Barbells&Weights'),
 (3, 'FitnessAccessories'),
@@ -50,19 +59,32 @@ INSERT INTO `category` (`Category_ID`, `Category_Name`) VALUES
 -- Table structure for table `checkout`
 --
 
-CREATE TABLE `checkout` (
-  `ID` int(12) NOT NULL,
-  `FullName` varchar(35) NOT NULL,
-  `Email` varchar(35) NOT NULL,
-  `Address` varchar(35) NOT NULL,
-  `City` varchar(35) NOT NULL,
-  `State` varchar(20) NOT NULL,
-  `zip` int(7) NOT NULL,
-  `NameOnCard` varchar(30) NOT NULL,
-  `Credit/DebitNumber` int(25) NOT NULL,
-  `ExpiryMonth` int(5) NOT NULL,
-  `ExpiryYear` year(4) NOT NULL,
-  `CVV` int(5) NOT NULL
+CREATE TABLE `checkout`
+(
+  `ID` int
+(12) NOT NULL,
+  `FullName` varchar
+(35) NOT NULL,
+  `Email` varchar
+(35) NOT NULL,
+  `Address` varchar
+(35) NOT NULL,
+  `City` varchar
+(35) NOT NULL,
+  `State` varchar
+(20) NOT NULL,
+  `zip` int
+(7) NOT NULL,
+  `NameOnCard` varchar
+(30) NOT NULL,
+  `Credit/DebitNumber` int
+(25) NOT NULL,
+  `ExpiryMonth` int
+(5) NOT NULL,
+  `ExpiryYear` year
+(4) NOT NULL,
+  `CVV` int
+(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -71,20 +93,30 @@ CREATE TABLE `checkout` (
 -- Table structure for table `product`
 --
 
-CREATE TABLE `product` (
-  `prod_id` int(10) NOT NULL,
-  `prod_title` varchar(255) NOT NULL,
-  `prod_price` int(10) NOT NULL,
-  `prod_description` varchar(255) NOT NULL,
-  `prod_image` varchar(100) NOT NULL,
-  `prod_category` int(10) NOT NULL
+CREATE TABLE `product`
+(
+  `prod_id` int
+(10) NOT NULL,
+  `prod_title` varchar
+(255) NOT NULL,
+  `prod_price` int
+(10) NOT NULL,
+  `prod_description` varchar
+(255) NOT NULL,
+  `prod_image` varchar
+(100) NOT NULL,
+  `prod_category` int
+(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prod_id`, `prod_title`, `prod_price`, `prod_description`, `prod_image`, `prod_category`) VALUES
+INSERT INTO `product` (`
+prod_id`,
+`prod_title
+`, `prod_price`, `prod_description`, `prod_image`, `prod_category`) VALUES
 (101, 'Commercial cardio equipment', 1006, 'Lorem ipsum is a dummy text used to replace text in some areas just for the purpose of an example. It can be used in publishing and graphic design. It is used to demonstrate the graphics elements of a document, such as font, typography, and layout.', 'Commercial cardio equipment.png', 1),
 (102, 'bicycle cardio-equipment', 1050, 'Lorem ipsum is a dummy text used to replace text in some areas just for the purpose of an example. It can be used in publishing and graphic design. It is used to demonstrate the graphics elements of a document, such as font, typography, and layout.', 'bicycle cardio-equipment.jpg', 1),
 (103, 'Bike-cardio', 1025, 'Lorem ipsum is a dummy text used to replace text in some areas just for the purpose of an example. It can be used in publishing and graphic design. It is used to demonstrate the graphics elements of a document, such as font, typography, and layout.', 'Bike-cardio.jpg', 1),
@@ -112,19 +144,28 @@ INSERT INTO `product` (`prod_id`, `prod_title`, `prod_price`, `prod_description`
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `ID` int(11) NOT NULL,
-  `Firstname` varchar(40) NOT NULL,
-  `Lastname` varchar(40) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Password` varchar(255) NOT NULL
+CREATE TABLE `users`
+(
+  `ID` int
+(11) NOT NULL,
+  `Firstname` varchar
+(40) NOT NULL,
+  `Lastname` varchar
+(40) NOT NULL,
+  `Email` varchar
+(50) NOT NULL,
+  `Password` varchar
+(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `Firstname`, `Lastname`, `Email`, `Password`) VALUES
+INSERT INTO `users` (`
+ID`,
+`Firstname
+`, `Lastname`, `Email`, `Password`) VALUES
 (9, 'test', 'test', 'test@gmail.com', '$2y$10$hVu7u8D/9gqJk7Y10hfneeUl6ZHxdToVuCTbDIOo.SzwjzZNnXhc.');
 
 --
@@ -135,13 +176,15 @@ INSERT INTO `users` (`ID`, `Firstname`, `Lastname`, `Email`, `Password`) VALUES
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`prod_id`);
+ADD PRIMARY KEY
+(`prod_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`);
+ADD PRIMARY KEY
+(`ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -151,7 +194,8 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int
+(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

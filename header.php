@@ -1,4 +1,4 @@
-<?php include ('server.php');
+<?php require_once ('server.php');
 
 
 ?>
@@ -66,14 +66,21 @@
                     </button>
                  </div>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-3" >
+                    <?php if(isset($_SESSION['Email'])):?>  
+                        <li>
+                            <a href ="index.php">
+                                <i class = "fa fa-user">
+                                <?php echo $_SESSION['fullname']; ?>
+                            </a>
+                      </li>
+                    <?php  else : ?>
+          
                     <li class="nav-item "><a class="text-decoration-none nav-link" href="login.php">Login</a></li>
                     <li class="nav-item "><a class="text-decoration-none nav-link" href="register.php"> Register</a></li>
-                    <li class="nav-item ">
-                        <a class="text-decoration-none nav-link" href="cart.php">
-                            <i class="fas fa-shopping-cart"> Cart</i>
-                        </a>
-
-                    </li>
+                    <?php endif; ?>
+                    <li class="nav-item "> <a class="text-decoration-none nav-link" href="cart.php">
+                            <i class="fas fa-shopping-cart"> Cart</i> </a></li>
+  
                 </ul>
 
             </div>

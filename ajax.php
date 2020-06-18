@@ -1,7 +1,9 @@
 <?php
-  session_start();
+session_start();
   $total = 0;
   $shipping = 0;
+  $output = "";
+  $test = "";
   if(!empty($_SESSION["shopping_cart"])) {
     $shipping = 100;
     foreach ($_SESSION["shopping_cart"] as $key => $value) {
@@ -27,8 +29,9 @@
           </td>
         </tr>
     ';
-    $total = $total + ($value[price] * $value["quantity"]) ;
+    $total = $total + ($value["price"] * $value["quantity"]) ;
     }
+   
   }
   else {
     $output .= '
@@ -36,6 +39,7 @@
         <td colspan="4" align="center">Your Cart is Empty </td>
       </tr>
     ';
+
   }
 
 

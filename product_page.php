@@ -1,8 +1,11 @@
 <?php
-include("header.php");
 //CONNECT TO DATABASE
 $arr = explode("/",$_SERVER['PHP_SELF']);
 $CurrentDIR = '/' . $arr[1] . '/' . $arr[2];
+
+include("header.php");
+
+
 ?>
 
 <div class="container p-4">
@@ -50,7 +53,7 @@ while($row = mysqli_fetch_array($results)){
                               </a>
                         </div>
 
-                        <form method='POST' action='$CurrentDIR/cart.php?action=add&id=$prod_id&quantity=1'>
+                        <form method='POST' action='cart.php?action=add&id=$prod_id&quantity=1'>
                           <div class='panel-heading'>
                               $ $prod_price
                               <button class='btn btn-info btn-xs' type='submit' name='add_to_cart'>
