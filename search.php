@@ -41,7 +41,7 @@ $CurrentDIR = '/' . $arr[1] . '/' . $arr[2];
 
             echo "
             <div class = 'productList bg-white'>
-              <div class='col-md-8 p-1 mx-auto'  style = 'width : 300px; height : 300px;'>
+              <div class='col-md-8 p-1 mx-auto'  style = 'width : 300px; height : 350px;'>
 
                             <div class='panel panel-default ' >
 

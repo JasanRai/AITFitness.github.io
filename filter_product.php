@@ -43,11 +43,11 @@ $results= mysqli_query($db,$sql);
 
   echo "
   <div class = 'productList bg-white'>
-  <div class='col-md-8 p-1 mx-auto'  style = 'width : 300px; height : 300px;'>
+  <div class='col-md-8 p-1 mx-auto'  style = 'width : 300px; height : 350px;'>
 
                 <div class='panel panel-default ' >
 
-                    <div id='title' class='panel-heading'>$prod_title</div>
+                    <div id='title' class='panel-heading h5 '>$prod_title</div>
                         <div class='panel-body' style=' height: auto; overflow: hidden;'>
                             <a href = 'description_page.php?id=$prod_id'>
                                 <img id='image' class='img-responsive' src='images/$prod_image' style = 'width : 200px; height:200px;'>

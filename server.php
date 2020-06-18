@@ -6,10 +6,13 @@
     $Lastname = "";
     $Email = "";
     $errors = array();
+    $username ="epiz_26046417";
+    $password = "LQtEtsJlO8n7Yf";
+    $server = "sql308.epizy.com";
     
 
 //CONNECT TO DATABASE
-    $db = mysqli_connect('localhost', 'root', '', 'authentication');
+    $db = "epiz_26046417_AITFitness";/* mysqli_connect('localhost', 'root', '', 'authentication'); */
 
 
     if(isset($_POST['register']))

@@ -1,24 +1,20 @@
 <?php
-include "header.php";
+include "server.php";
 
-$message = $_POST['message'];
+if(isset($_POST['form-control submit']))
+{
+ 
+    $message = $_POST['message'];
+    $name = $_POST['name'];
+    $mailFrom = $_POST['mail'];
 
-    $email_from = '7179@ait.nsw.edu.au';
+    $mailTo = "7179@ait.nsw.edu.au";
+    $headers = "From: ".$mailFrom;
+    $txt = "You have recieved an e-mail from".$name."\n\n".$message;
 
-    $email_subject = "New Form Submission";
+    mail($mailTo, $txt, $headers);
 
-    $email_body = "User Name :$Firstname.\n".
-                    "User Email :$Email.\n".
-                    "User Message : $message.\n";
-
-    $to = "7179@ait.nsw.edu.au";
-
-    $headers = "From : $email_from \r\n";
-
-    $headers .= "Reply-To : $Email \r\n";
-
-    mail($to, $email_subject, $email_body, $headers);
-
-    header("Location : index.php");
+    header("Location : index.php?mailsend");
+}
 
 ?>
