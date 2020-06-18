@@ -12,7 +12,7 @@
     
 
 //CONNECT TO DATABASE
-    $db = "epiz_26046417_AITFitness";/* mysqli_connect('localhost', 'root', '', 'authentication'); */
+    $db = /* "epiz_26046417_AITFitness"; */mysqli_connect('localhost', 'root', '', 'authentication');
 
 
     if(isset($_POST['register']))
